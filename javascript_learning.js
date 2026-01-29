@@ -107,6 +107,17 @@ student.checked = true;      // ".checked" is just a new key (property) we made 
 // It implies we are marking this object as "done" or "selected".
 // It works exactly like student.isAwesome = true;
 
+/*
+   PYTHON ANALOGY:
+   ----------------
+   In a Python Class, you write:
+       self.checked = True
+   
+   In JavaScript, 'student' IS 'self'. 
+   So 'student.checked = true' is exactly the same concept!
+   You are attaching an attribute to the object instance.
+*/
+
 // ==========================================
 // 6. Testing Area
 // ==========================================
@@ -115,4 +126,109 @@ student.checked = true;      // ".checked" is just a new key (property) we made 
 console.log("--- Testing add function ---");
 console.log("5 + 10 =", add(5, 10));
 console.log("String concatenation:", add("Web", " Development"));
-console.log("Object Test:", student); 
+console.log("Object Test:", student);
+
+// ==========================================
+// 6. Nested Objects (Objects inside Objects)
+// ==========================================
+
+/*
+   Just like you can have a Dictionary inside a Dictionary in Python:
+   user = {
+       "name": "Leo",
+       "metadata": {
+           "id": 123,
+           "active": True
+       }
+   }
+*/
+
+let user = {
+   name: "Leo",
+   metadata: {
+      id: 123,
+      active: true
+   }
+};
+
+// Accessing it? Chain the dots!
+// console.log(user.metadata.active); // true
+
+/*
+   VISUALIZING THE LEVELS:
+   -----------------------
+   Think of it like Folders on your computer:
+   
+   📁 obj  (The main variable)
+    |
+    └── 📁 data  (A specific folder inside 'obj')
+         |
+         └── 📄 checked = true  (The file inside 'data')
+
+   So 'checked' belongs to 'data', and 'data' belongs to 'obj'.
+   That is why we write: obj.data.checked
+*/
+
+// ==========================================
+// 7. Safety Checking (The "Does it exist?" check)
+// ==========================================
+
+/*
+   If we try to access 'user.address.postcode', it will CRASH 
+   because 'user.address' is undefined.
+
+   In Python you might do: 
+   if "address" in user:
+   
+   In JavaScript, we just use the "Truthy" check:
+*/
+
+if (user.metadata) {
+   // This block ONLY runs if user.metadata exists (is not null/undefined)
+   console.log("Metadata exists!");
+}
+
+// ==========================================
+// 8. Testing Area (Consolidated)
+// ========================================== 
+console.log("--- Testing add function ---");
+console.log("5 + 10 =", add(5, 10));
+console.log("Object Test:", student);
+console.log("User metadata is safe to access:", user.metadata.id);
+}
+
+// ==========================================
+// 9. Checking Types (How to know what you have?)
+// ==========================================
+
+/*
+   You asked: "If types are invisible, how do we enforce them?"
+   Answer: We use helper functions!
+*/
+
+let x = 10;
+let y = 10.5;
+let z = "Hello";
+
+// 1. The 'typeof' operator (Basic checks)
+// console.log(typeof x); // "number"
+// console.log(typeof z); // "string"
+
+// 2. Specific Checks (like Integers)
+// Since 'number' covers BOTH ints and floats, we need a special tool:
+// Number.isInteger(value)
+
+if (Number.isInteger(x)) {
+   // True! 10 is an integer.
+}
+
+if (Number.isInteger(y)) {
+   // False! 10.5 is a float (decimal).
+}
+
+/*
+   So for your 'arraySet' function:
+   You need to combine checks:
+   1. Is it an integer? (Number.isInteger(i))
+   2. Is it inside the bounds? (i >= 0 && i < arr.length)
+*/

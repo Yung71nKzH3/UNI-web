@@ -36,3 +36,15 @@ function subtract(a, b) {
 function checkObject(obj) {
   obj.checked = true;
 }
+
+function checkObjectInside(obj) {
+  if (obj.data) {
+    obj.data.checked = true;
+  }
+}
+
+function arraySet(arr, i, n) {
+  if (Number.isInteger(i) && i >= 0 && i < arr.length) {
+    arr[i] = n;
+  }
+}
