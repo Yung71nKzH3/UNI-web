@@ -12,61 +12,57 @@
 
 'use strict';
 
-/*Question 1*/
+/*Question 2*/
 function id() {
   // e.g. return "UP654321";
   return "UP2270781";
 }
 
-/*Question 2*/
+/*Question 3*/
 function fn() {
   return 'Leonardo';
 }
 
-/*Question 3*/
+/*Question 4*/
 function sn() {
   return 'Valenti';
 }
 
-/*Question 4*/
+/*Question 5*/
 function add(a, b) {
   return a + b;
 }
 
-/*Question 5*/
+/*Question 6*/
 function subtract(a, b) {
   return a - b;
 }
 
-/*Question 6*/
+/*Question 7*/
 function checkObject(obj) {
   obj.checked = true;
 }
 
-/*Question 7*/
+/*Question 8*/
 function checkObjectInside(obj) {
   if (obj.data) {
     obj.data.checked = true;
   }
 }
 
-/*Question 8*/
+/*Question 9*/
 function arraySet(arr, i, n) {
   if (Number.isInteger(i) && i >= 0 && i < arr.length) {
     arr[i] = n;
   }
 }
 
-/*Question 9*/
+/*Question 10*/
 function addAll(arr) {
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-  }
-  return sum;
+  return arr.reduce((acc, curr) => acc + curr, 0);
 }
 
-/*Question 10*/
+/*Question 11*/
 function larger(a, b) {
   if (a > b) {
     return a;
@@ -75,42 +71,31 @@ function larger(a, b) {
   }
 }
 
-/*Question 11*/
+/*Question 12*/
 function largest(arr) {
   if (arr.length === 0) {
     return null;
   }
-  let max = arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
-  }
-  return max;
+  return arr.reduce((max, curr) => (curr > max ? curr : max), arr[0]);
 }
 
-/*Question 12*/
+/*Question 13*/
 function compare(a, b) {
   if (a.length !== b.length) {
     return false;
   }
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) {
-      return false;
-    }
-  }
-  return true;
-}
-
-/*Question 13*/
-function addToAll(arr, n) {
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] += n;
-  }
-  return arr;
+  return a.every((element, i) => element === b[i]);
 }
 
 /*Question 14*/
+function addToAll(arr, n) {
+  arr.forEach((_, i) => {
+    arr[i] += n;
+  });
+  return arr;
+}
+
+/*Question 15*/
 let remembered;
 
 function rememberThis(keepsake) {
@@ -118,45 +103,27 @@ function rememberThis(keepsake) {
   return remembered;
 }
 
-/*Question 15*/
+/*Question 16*/
 function nArray(n) {
-  const arr = [1];
-  for (let i = 1; i < n; i++) {
-    arr.push(i + 1);
-  }
-  return arr;
+  return Array.from({ length: n }, (_, i) => i + 1);
 }
 
-/*Question 16*/
+/*Question 17*/
 function addAllOpt(arr) {
   if (!arr || arr.length === 0) {
     return 0;
   }
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-  }
-  return sum;
+  return arr.reduce((acc, curr) => acc + curr, 0);
 }
 
-// Question 17
+/*Question 18*/
 function divisors(arr, div) {
-  let newArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % div === 0) {
-      newArr.push(arr[i]);
-    }
-  }
-  return newArr;
+  return arr.filter(element => element % div === 0);
 }
 
-// Question 18
+/*Question 19*/
 function multiples(n, m) {
-  let arr = [];
-  for (let i = 1; i <= n; i++) {
-    arr.push(i * m);
-  }
-  return arr;
+  return Array.from({ length: n }, (_, i) => (i + 1) * m);
 }
 
 
